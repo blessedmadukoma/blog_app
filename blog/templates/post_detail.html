@@ -7,8 +7,9 @@
     <p>{{ post.body }}</p>
   </div>
 
-
-  <a href="{% url 'post_edit' post.pk %}">+Edit Blog Post</a>
-  <a href="{% url 'post_delete' post.pk %}">+Delete Blog Post</a>
+  {% if request.user.is_authenticated %}
+    <a href="{% url 'post_edit' post.pk %}">+Edit Blog Post</a>
+    <a href="{% url 'post_delete' post.pk %}">+Delete Blog Post</a>
+  {% endif %}
 
 {% endblock content %}
